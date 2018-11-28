@@ -48,6 +48,10 @@ Developer @GA in SYD
 /******************************************
 /* BASE STYLES
 /*******************************************/
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 21px;
@@ -75,10 +79,10 @@ h1 {
 
 h2 {
     font-size: 2em;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.3;
     padding-top: 20px;
-    color: #a59563;
+    color: #b6aa82;
     padding-bottom: 15px;
 }
 
@@ -93,12 +97,22 @@ h3 {
 
 h4 {
     font-size: 1.4em;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.3;
     padding-top: 25px;
     padding-bottom: 10px;
-    color: #a59563;
+    color: #c0b592;
     letter-spacing: 0.75;
+}
+
+a:link {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: none;
+    color: inherit;
 }
 
 /******************************************
@@ -108,6 +122,7 @@ h4 {
 header {
     width: 80%;
     margin: auto;
+    overflow: hidden;
   } 
 
 header nav ul {
@@ -126,14 +141,75 @@ header nav ul li {
   }
 
 header nav ul li a {
-    color: white;
     font-size: 17px;
     text-align: center;
     font-weight: 400;
     text-transform: uppercase;
-    text-decoration: none;
     letter-spacing: 0.065em;
   }
+
+/* Style the navbar */
+#navbar {
+    overflow: hidden;
+    padding-top: 20px;
+    /* margin-top: 15px; */
+  }
+  
+  /* Navbar links */
+  #navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px;
+    padding-top: 10px;
+  }
+  
+  /* Page content */
+  .content {
+    padding: 16px;
+  }
+  
+  /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+  }
+
+  .sticky-background-show {
+    background-color: rgba(36, 35, 35, 0.9);
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 2s;
+  }
+
+  .sticky-background-hide {
+      background-color: transparent;
+      -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+      animation-name: example;
+      animation-duration: 2s;
+  }
+
+  /* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    from {background-color: rgba(0, 0, 0, 0)}
+    to {background-color:  rgba(36, 35, 35, 0.9)}
+}
+
+/* Standard syntax */
+@keyframes example {
+    from {background-color: rgba(0, 0, 0, 0)}
+    to {background-color:  rgba(36, 35, 35, 0.9)}
+}
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 60px;
+  } 
 
 header h1 {
     color: white;
@@ -143,28 +219,28 @@ header h1 {
     font-weight: 300;
 }
 
-a:hover {
+header a:hover {
     color: white;
     font-weight: 500;
     text-decoration: none;
 }
 
-a:link {
+header a:link {
     text-decoration: none;
     color: none;
-    color: white;
+    /* color: white; */
 }
 
-a:visited {
+header a:visited {
     text-decoration: none;
     color: none;
-    color: white;
+    /* color: white; */
 }
 
-nav a:visited {
+header nav a:visited {
     text-decoration: none;
     color: none;
-    color: white;
+    /* color: white; */
 }
 
 #home-hero button a:visited {
@@ -186,6 +262,8 @@ footer a {
     height: 100px;
     padding-top: 30px;
     display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
 }
 
 #home-container {
@@ -193,15 +271,20 @@ footer a {
     flex-direction: column;
     height: 1050px;
     text-align: center;
-    background-image: url(../images/hero-home.jpg);
-    background-position: center; 
+    background-image: url(../images/hero-home2.jpg);
+    background-size: 110%;
+    background-position: center top;
     background-repeat: no-repeat; 
     background-size: cover;
 }
 
+#home-container #home-hero {
+    padding-top: 140px;
+    align-items: center;
+}
+
 #home-hero {
-    margin-top: auto;
-    margin-bottom: auto;
+    padding-top: 40px;
     align-items: center;
 }
 
@@ -218,6 +301,7 @@ footer a {
     font-weight: 200;
     margin-top: -50px;
     -webkit-font-smoothing: antialiased;
+    text-shadow: 2px 2px 16px black;
 }
 
 #home-hero button {
@@ -225,16 +309,43 @@ footer a {
     height: 60px;
     width: 280px;
     background-color: transparent;
-    border: 2px solid white;
+    border: 1px solid white;
     color: white;
     font-family: 'Montserrat';
-    font-size: 17px;
-    font-weight: 300;
     text-align: center;
-    text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.065em;
 }
+
+i {
+    border: solid white;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 3px;
+    -webkit-animation: 3s ease 0s normal forwards 1 fadein;
+    animation: 3s ease 0s normal forwards 1 fadein;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    height: 25px;
+    width: 25px;
+    margin-bottom: 20px;
+}
+
+@keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
+@-webkit-keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
 
 #main-content {
     display: flex;
@@ -252,17 +363,26 @@ footer a {
 
 #filter button {
     align-items: flex-end;
-    height: 50px;
-    width: 200px;
+    height: 60px;
+    width: 240px;
     font-family:'Montserrat';
-    background-color: #dddbdb;
-    color: #807f7f;
+    background-color: transparent;
     font-size: 20px;
+    border-radius: 0px;
+    color: #807f7f;
+    border-color: lightgray;
 }
 
-/* .dropdown {
-    position: relative;
-} */
+#filter button:hover {
+    background-color: #c0b592;
+    transition: .5s ease;
+    font-weight: 400;
+    color: white;
+}
+
+.dropdown-item {
+    color: #636363;
+}
 
 #recipies {
     width: 80%;
@@ -283,30 +403,42 @@ article {
     flex-direction: column;
     background-color: white;
     transition: box-shadow .3s;
-    }
+    transition: all .5s ease;
+    text-decoration: none;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+article a:link{
+    text-decoration: none;
+    color: white;
+}
 
 article:hover {
     box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    -moz-transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+    -o-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    transform: scale(1.03);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand')";
+    filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand');
   }    
    
 #content {
     padding: 0 25px 0 25px;
 }    
 
-.recipies-container img{
-    height: 280px;
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover;
-    position: relative;
-}
-
-.recipies-container button {
+article button {
     align-items: flex-end;
     height: 50px;
     width: 200px;
-    font-family:'Montserrat';
-    font-weight: 400;
     background-color: transparent;
     color: #807f7f;
     font-size: 20px;
@@ -315,22 +447,24 @@ article:hover {
     text-decoration: none;
 }
 
-.recipies-container button a:visited {
-    color: #807f7f;
+article button:hover {
+    background-color: #c0b592;
+    transition: .5s ease;
+    font-weight: 400;
+    color: white;
+}
+
+article button a:hover {
+    color: white;
+    font-weight: normal;
+    transition: .5s ease;
 }
 
 .text-container {
     padding: 5px 20px 5px 20px;
 }
 
-
-/* .Chocolate{
-    background-image: url(../images/Chocolate\ Slice.jpg);
-    z-index: 1;
-    position: absolute;
-} */
-
-chocolate {
+#chocolate {
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -341,10 +475,11 @@ chocolate {
     justify-content: flex-end;
     padding-right: 10px;
     padding-top: 10px;
-    background-image: url(../images/Chocolate\ Slice.jpg);
-}
+    background-image: url(../images/thumbnail-chocolate.jpg);
+  }
 
-datewalnut {
+
+#datewalnut {
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -358,7 +493,7 @@ datewalnut {
     background-image: url(../images/thumbnail-datewalnut.jpg);
 }
 
-coconut {
+#coconut {
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -372,7 +507,7 @@ coconut {
     background-image: url(../images/thumbnail-coconut.jpg);
 }
 
-applepie {
+#applepie {
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -386,7 +521,7 @@ applepie {
     background-image: url(../images/thumbnail-applepie.jpg);
 }
 
-ricecustard {
+#ricecustard {
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -400,7 +535,7 @@ ricecustard {
     background-image: url(../images/thumbnail-rice.jpg);
 }
 
-applesponge {
+#applesponge {
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -414,7 +549,7 @@ applesponge {
     background-image: url(../images/thumbnail-applesponge.jpg);
 }
 
-buttercake {
+#buttercake {
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -428,7 +563,7 @@ buttercake {
     background-image: url(../images/thumbnail-butter.jpg);
 }
 
-scones{
+#scones{
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -442,7 +577,7 @@ scones{
     background-image: url(../images/thumbnail-scones.jpg);
 }
 
-fruitcake{
+#fruitcake{
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -456,7 +591,7 @@ fruitcake{
     background-image: url(../images/thumbnail-wedding.jpg);
 }
 
-pancakes {
+#pancakes {
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -470,7 +605,7 @@ pancakes {
     background-image: url(../images/thumbnail-pancakes.jpg);
 }
 
-marmelaide {
+#marmelaide {
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -484,7 +619,7 @@ marmelaide {
     background-image: url(../images/thumbnail-marmelaide.jpg);
 }
 
-grapefruit {
+#grapefruit {
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -498,7 +633,7 @@ grapefruit {
     background-image: url(../images/thumbnail-grapefruit.jpg);
 }
 
-potato{
+#potato{
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -512,7 +647,7 @@ potato{
     background-image: url(../images/thumbnail-potato.jpg);
 }
 
-colslaw{
+#colslaw{
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -526,7 +661,7 @@ colslaw{
     background-image: url(../images/thumbnail-coleslaw.jpg);
 }
 
-chicken{
+#chicken{
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -540,7 +675,7 @@ chicken{
     background-image: url(../images/thumbnail-chicken.jpg);
 }
 
-fish{
+#fish{
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -554,7 +689,7 @@ fish{
     background-image: url(../images/thumbnail-fish.jpg);
 }
 
-roast{
+#roast{
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -568,7 +703,7 @@ roast{
     background-image: url(../images/thumbnail-roast.jpg);
 }
 
-tomato{
+#tomato{
     height: 280px;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -585,7 +720,7 @@ tomato{
 .sweet-tag {
     width: 70px;
     height: 33px;
-    background-color: #C1272D;
+    background-color: #be0d00;
     position: absolute;
     z-index: 2;
     font-size: 15px;
@@ -598,7 +733,7 @@ tomato{
 .savory-tag {
     width: 70px;
     height: 33px;
-    background-color: #A59563;
+    background-color: #f7a40a;
     position: absolute;
     z-index: 2;
     font-size: 15px;
@@ -608,7 +743,7 @@ tomato{
     border-radius: 3px;
 }
 
-.DateWalnut{
+/* .DateWalnut{
     background-image: url(../images/thumbnail-datewalnut.jpg);
     background-size: 130%;
 }
@@ -653,7 +788,7 @@ tomato{
 }
 
 .Colslaw{
-    background-image: url(../images/thumbnail-coleslaw.jpg;
+    background-image: url(../images/thumbnail-coleslaw.jpg);
     background-size: 130%;
 }
 
@@ -675,7 +810,7 @@ tomato{
 .TomatoRolls{
     background-image: url(../images/thumbnail-datewalnut.jpg);
     background-size: 130%;
-}
+} */
 
 
 /******************************************
@@ -687,33 +822,36 @@ tomato{
   } 
 
 .hero-chocolate{
-    background-image: url(../images/Chocolate\ Slice.jpg);
-    background-color: #292929;
+    display: flex;
+    flex-direction: column;
     height: 700px;
+    background-image: url(../images/recipie-chocolate.jpg);
+    background-color: #292929;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
     width: 100%;
-    padding-top: 30px;
-  }
-  
-.hero-text h6 {
-    text-align: left;
-    position: absolute;
-    width: 80%;
-    top: 85%;
-    left: 10%;
-    color: white;
-    line-height: 1;
   }
 
-h6 {
+.hero-text {
+    margin: auto;
+    display: flex;
+    flex-grow: 0.8;
+    margin-left: 10%;
+    align-items: flex-end;
+    color: white;
     font-size: 70px;
-    font-weight: 600;
+    font-weight: bold;
     font-family: "montserrat";
-    /* text-shadow: 3px 3px 50px rgba(0,0,0,0.45); */
-  } 
+}  
+
+#home-hero {
+    margin-top: auto;
+    margin-bottom: auto;
+    align-items: flex-end;
+    align-content: flex-end;
+}  
 
 #main .container{
     width: 100%;
@@ -750,6 +888,7 @@ li {
   }
 
 #quote {
+    display: flex;
     margin: auto;
     width: 100%;
     background-color: #c0b592;
@@ -760,6 +899,14 @@ li {
     padding-top: 50px;
     padding-bottom: 50px;
 }  
+
+#quote p {
+    font-weight: 600;
+}
+
+#quote h3 {
+    padding-top: 0px;
+}
 
 .content {
     width: 50%;
@@ -805,13 +952,35 @@ li {
     justify-items: flex-end;
 }
 
+#about h2 {
+    font-weight: bold;
+}
+
+hr {
+    display: inline-block;
+    height: 7px;
+    width: 50px;
+    border-radius: 5px;
+    background-color: #c0b592;
+    align-content: flex-start;
+    margin-bottom: 20px;
+}
+
+
 .row1 {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    justify-items: center;
     flex-wrap: wrap;
     margin-bottom: 50px;
     flex-direction: row;
+}
+
+.row1 #left-img {
+    text-align: center;
+    margin-top: 80px;
 }
 
 .row2 {
@@ -862,10 +1031,19 @@ li {
     margin-bottom: 50px;  
 }
 
+.row6 #left-img {
+    text-align: center;
+    margin-top: -100px;
+}
+
 #left-img {
     width: 50%;
     align-items: center;
     justify-items: flex-start;
+}
+
+#row1 #left-img {
+    text-align: center;
 }
 
 #right-img {
@@ -877,15 +1055,18 @@ li {
     padding-left: 20px;
     padding-right: 15%;
     width: 50%;
-    align-items: center;
 }
 
 #left-text {
     padding-left: 12%;
     padding-right: 5%;
     width: 50%;
-    align-items: center;
 }
+
+/* .row2 #left-text {
+    width: 40%;
+    
+} */
 
 /******************************************
 /* CONTACT PAGE
@@ -893,7 +1074,7 @@ li {
 #contact-container {
     display: flex;
     flex-direction: column;
-    height: 800px;
+    height: 680px;
     text-align: center;
     background-image: url(../images/hero-contact7.jpg);
     background-position: center;
@@ -905,6 +1086,7 @@ li {
     width: 80%;
     margin: auto;
     padding-bottom: 50px;
+    padding-top: 40px;
 }
 
 #contact-content button {
@@ -921,24 +1103,44 @@ li {
     text-decoration: none;
 }
 
-button a:hover {
-    font-weight: 500;
+#contact-content h2 {
+    font-weight: bold;
+    padding: 0px;
 }
 
-
-/******************************************
-/* ABOUT PAGE
-/*******************************************/
-/* #about-container {
-    display: flex;
-    flex-direction: column;
-    height: 1050px;
-    text-align: center;
-    background-image: url(../images/hero-about.jpg);
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover;
+/* button a:hover {
+    font-weight: 500;
 } */
+
+#contact-content button:hover {
+    background-color: #c0b592;
+    transition: .5s ease;
+    font-weight: 400;
+    color: white;
+}
+
+#contact-content button a:hover {
+    color: white;
+    font-weight: normal;
+    transition: .5s ease;
+}
+
+.content {
+    width: 80%;
+    flex-direction: row;
+}
+
+.icon {
+    width: 2%;
+    float: left;
+    color: white;
+    display: flex;
+}
+
+.message {
+    width: 95%;
+    float: right;
+}
 
 /******************************************
 /* FOOTER
@@ -969,6 +1171,9 @@ button a:hover {
     background-color: #252225;
     text-align: center;
     font-weight: 200;
+    color: lightgrey;
+    font-weight: 200;
+    font-size: 18px;
 }
 
 #footer-links ul {
@@ -979,6 +1184,7 @@ button a:hover {
     list-style: none;
     padding-top: 20px;
 }
+
 /******************************************
 /* HAMBURGER MENU
 /*******************************************/
@@ -987,7 +1193,7 @@ header nav .line{
     width: 2em;
     height: .3em;
     background: white;
-    border-radius: 1em;
+    border-radius: 0.5em;
     margin-top: .25em;
   }
   
@@ -1007,31 +1213,31 @@ header nav .line{
 @media (max-width: 1100px) {
 
     header {
-        width: 90%;
+        width: 95%;
         margin: auto;
       }
       
     header h1 {
         color: white;
         font-size: 25px;
-        margin-top: -60px;
-        /* float: left; */
+        margin-top: -20px;
+        float: left;
         font-weight: 400;
     }  
 
-      header nav {
+    header nav {
         width: 100%;
         margin: 0;
       }
     
-      header nav ul li{
+    header nav ul li{
         float: none;
         display: block;
         margin: 0;
         font-size: 18px;
       }
     
-      header nav ul li:first-child{
+    header nav ul li:first-child{
         display:block;
         position: absolute;
         top:.3em;
@@ -1039,19 +1245,24 @@ header nav .line{
         margin-top: -37px;
       } 
     
-      header nav ul.slideDown {
-        height: 10em;
+    header nav .slideDown {
+        height: 8em;
+        width: 100%;
+        margin-top: -15px;
       }
     
-      header nav ul{
+    header nav ul{
         height:0;
         transition:height 1s;
         overflow: hidden;
-        display: flex;
+        display: inline-block;
         flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: -15px;
       }
     
-      header nav ul li a {
+    header nav ul li a {
         display: block;
         width: 100%;
         padding: 10px 0;
@@ -1059,13 +1270,13 @@ header nav .line{
         text-align: center;
       }  
 
-      #home-hero h1 {
+    #home-hero h1 {
         font-family: Laatz;
-        font-size: 150px;
+        font-size: 120px;
+        margin: -10px;
         color: white;
         line-height: 0.9;
         -webkit-font-smoothing: antialiased;
-        /* -moz-osx-font-smoothing: grayscale; */
     }
     
     #home-hero h2 {
@@ -1078,14 +1289,7 @@ header nav .line{
     }  
 
     #home-container {
-        /* display: flex;
-        flex-direction: column; */
         height: 600px;
-        /* text-align: center;
-        background-image: url(../images/hero-home.jpg);
-        background-position: center; 
-        background-repeat: no-repeat; 
-        background-size: cover; */
     }
 
     #contact-container {
@@ -1103,40 +1307,22 @@ header nav .line{
         background-size: cover;
     }
 
+    .row1 #left-img {
+        margin-top: 10px;
+    }
+
     .hero-chocolate{
-        background-image: url(../images/Chocolate\ Slice.jpg);
-        background-color: #292929;
         height: 600px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-        width: 100%;
-        padding-top: 30px;
       }
 
-      .hero-text h6 {
-        text-align: bottom;
-        position: absolute;
-        width: 80%;
-        /* top: 70%; */
-        left: 5%;
-        color: white;
-      }
-
-      h6 {
+    .hero-text {
         font-size: 50px;
         line-height: 1.1;
-        font-weight: 600;
-        font-family: "montserrat";
-        /* text-shadow: 3px 3px 50px rgba(0,0,0,0.45); */
+        margin-left: 5%;
       }
 
-      #filter {
+    #filter {
         display: flex;
-        /* align-items: center;
-        justify-content: space-between;
-        padding: 20px 0 10px 0; */
         width: 92%;
         margin: auto;
     }
@@ -1146,11 +1332,7 @@ header nav .line{
     }
 
     article {
-        /* margin: 10px;
-        display: flex; */
         width: 47.25%;
-        /* flex-direction: column;
-        background-color: white; */
         }
     
     #main .container {
@@ -1181,11 +1363,15 @@ header nav .line{
 
     h2 {
         font-size: 1.5em;
-        font-weight: 400;
+        font-weight: 600;
         line-height: 1.3;
         padding-top: 10px;
         color: #a59563;
         padding-bottom: 15px;
+    }
+
+    h3 {
+        font-size: 1.4em;
     }
 
     #right-text {
@@ -1203,20 +1389,15 @@ header nav .line{
     }
 
     .row1 {
-        /* flex-direction: column-reverse; */
         padding-top: 20px;
-        /* margin-bottom: 10px; */
     } 
 
     #left-img {
         width: 40%;
-        /* align-items: center;
-        justify-items: flex-start; */
     }
     
     #right-img {
         width: 40%;
-        /* text-align: right; */
     }
 
     #footer-links {
@@ -1236,24 +1417,65 @@ header nav .line{
         list-style: none;
         padding-top: 20px;
     }
+
+    /* .content {
+        display: flex;
+        flex-direction: column;
+    } */
+
+    .icon {
+        float: none;
+        margin: auto;
+        width: 100%;
+        align-content: center;
+        justify-content: center;
+        padding-bottom: 20px;
+
+    }
+
+    .message {
+        width: 100%;
+        float: none;
+    }
+
 }   
+
+/* INBETWEEN DESKTOP & MOB FOR INDEX PAGE ONLY*/
+@media (max-width: 764px) {
+    #recipies {
+        width: 95%;
+    }
+
+    article {
+        width: 100%;
+    }  
+
+    #filter {
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        padding-bottom: 10px;
+    }
+
+    #filter button {
+        height: 50px;
+    }
+
+}
 
 /* MOBILE*/
 @media (max-width: 670px) {
-
-
     #home-hero h1 {
         font-family: Laatz;
-        /* padding-top: 80px; */
         font-size: 70px;
         padding-left: 10px;
         padding-right: 10px;
-        /* color: white;
-        line-height: 0.9; */
-        /* padding-left: 20px;
-        padding-right: 20px; */
         -webkit-font-smoothing: antialiased;
-        /* -moz-osx-font-smoothing: grayscale; */
     }
 
     #home-hero h2 {
@@ -1268,11 +1490,6 @@ header nav .line{
 
     h3 {
         font-size: 25px;
-        /* font-weight: 300;
-        color: #636363;
-        line-height: 1.5;    
-        padding-top: 20px;
-        padding-bottom: 20px; */
     }
 
     #home-hero button {
@@ -1284,32 +1501,16 @@ header nav .line{
     }
 
     article {
-        /* margin: 10px;
-        display: flex; */
         width: 100%;
-        /* flex-direction: column;
-        background-color: white; */
-        }
-
+        }  
 
     .hero-chocolate{
-        background-image: url(../images/Chocolate\ Slice.jpg);
-        background-color: #292929;
         height: 500px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-        width: 100%;
-        padding-top: 30px;
       }
 
     .hero-text h6 {
-        text-align: bottom;
-        width: 80%;
-        top: 65%;
-        left: 5%;
-        color: white;
+        width: 100%;
+        display: block;
       }   
 
      /* ABOUT PAGE */
@@ -1351,6 +1552,44 @@ header nav .line{
     #left-img {
         width: 100%;
         text-align: left;
+    }
+
+    .row1 #left-img {
+        margin-top: 0px;
+    }
+
+    .row6 #left-img {
+        margin-top: 0px;
+    }
+
+    .row1 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .row2 {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .row3 {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .row4 {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .row5 {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .row6 {
+        margin-top: 10px;
+        margin-bottom: 0px;
     }
     
     #footer-logo {
